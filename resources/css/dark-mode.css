@@ -1,0 +1,43 @@
+.rpi-theme.dark.theme-start {
+    color: var(--ui-grey-lightest);
+    background-color: var(--ui-black);
+
+    --p-card-background: var(--ui-grey-dark);
+    --p-card-color: var(--ui-grey-lightest);
+    --p-card-subtitle-color: var(--secondary-red);
+
+    --p-select-background: var(--ui-grey-dark);
+    --p-select-color: var(--ui-grey-lightest);
+    --p-select-border-color: var(--brand-rpi-red);
+    --p-select-hover-border-color: var(--secondary-red);
+    --p-select-focus-border-color: var(--secondary-red);
+    --p-select-placeholder-color: var(--ui-grey-medium);
+    --p-select-dropdown-color: var(--secondary-red);
+    --p-select-overlay-background: var(--ui-grey-dark);
+    --p-select-overlay-border-color: var(--brand-rpi-red);
+    --p-select-overlay-color: var(--ui-grey-lightest);
+    --p-select-option-color: var(--ui-grey-lightest);
+    --p-select-option-focus-background: var(--ui-black);
+    --p-select-option-focus-color: var(--ui-grey-lightest);
+    --p-select-option-selected-background: var(--brand-rpi-red);
+    --p-select-option-selected-color: var(--ui-white);
+    --p-select-option-selected-focus-background: var(--brand-rpi-red);
+    --p-select-option-selected-focus-color: var(--ui-white);
+
+    --p-togglebutton-background: var(--ui-grey-dark);
+    --p-togglebutton-color: var(--ui-grey-lightest);
+    --p-togglebutton-border-color: var(--brand-rpi-red);
+    --p-togglebutton-hover-background: var(--ui-black);
+    --p-togglebutton-checked-background: var(--brand-rpi-red);
+    --p-togglebutton-checked-color: var(--ui-white);
+    --p-togglebutton-checked-border-color: var(--brand-rpi-red);
+}
+
+.rpi-theme.dark .layout-wrapper {
+    background: var(--ui-black);
+    min-height: 100vh;
+}
+
+.rpi-theme.dark .layout-breadcrumb nav ol li {
+    color: var(--ui-white)
+}

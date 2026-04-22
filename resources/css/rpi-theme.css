@@ -1,0 +1,317 @@
+@import './dark-mode.css';
+@import './light-mode.css';
+
+.rpi-theme {
+    --brand-rpi-red: #c51d4a;
+    --brand-rpi-green: #6ac146;
+
+    --brand-cc-green: #009b3a;
+
+    --primary-yellow: #ffb12a;
+    --primary-orange: #f68e3b;
+    --primary-red: #f3524f;
+    --primary-violet: #a76fba;
+    --primary-navy: #004881;
+    --primary-blue: #41a6c4;
+    --primary-turquoise: #10aeb0;
+    --primary-green: #53ce63;
+
+    --secondary-yellow: #fddd42;
+    --secondary-orange: #ffc869;
+    --secondary-red: #f68583;
+    --secondary-violet: #c29acf;
+    --secondary-navy: #4c7fa7;
+    --secondary-blue: #87dcf6;
+    --secondary-turquoise: #58c7c8;
+    --secondary-green: #87dd92;
+    --secondary-pink: #f68583;
+    --secondary-blue-dark: #374e60;
+
+    --ui-black: #222222;
+    --ui-grey-dark: #444444;
+    --ui-grey-medium: #999999;
+    --ui-grey-light: #cccccc;
+    --ui-grey-lightest: #eeeeee;
+    --ui-white: #f5f6f9;
+    --ui-yellow: #fcf67f;
+
+    --maskbg: rgba(0, 0, 0, 0.4);
+    --transition-duration: 0.2s;
+    --sidebar-bg: var(--brand-cc-green);
+    --surface-ground: var(--brand-cc-green);
+}
+
+.rpi-theme.theme-start {
+    font-family: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+
+    --p-card-title-font-size: 1.25rem;
+    --p-card-title-font-weight: 700;
+    --p-card-caption-gap: 0.5rem;
+    --p-card-body-padding: 1.5rem;
+    --p-card-body-gap: 0.75rem;
+    --p-card-border-radius: 0.75rem;
+    --p-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.14);
+}
+
+.rpi-theme.theme-start .p-card {
+    border: 3px solid var(--brand-rpi-red);
+}
+
+/* ─── Layout wrapper ─── */
+
+.layout-wrapper:before {
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.layout-wrapper .layout-content-wrapper {
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden;
+}
+
+.layout-content-wrapper {
+    padding: 2rem;
+}
+
+/* ─── Topbar ─── */
+
+.layout-topbar {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.layout-topbar .topbar-start {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 999;
+}
+
+/* Hamburger button */
+.layout-topbar .topbar-start .topbar-menubutton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: inherit;
+    transition: background var(--transition-duration);
+}
+
+.layout-topbar .topbar-start .topbar-menubutton:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.layout-topbar .topbar-start .topbar-menubutton i {
+    font-size: 1.25rem;
+}
+
+/* ─── Sidebar ─── */
+
+.layout-sidebar {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 21rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 40px 40px 0;
+    background: var(--sidebar-bg, var(--brand-cc-green));
+    z-index: 999;
+    /* Hidden off-screen on mobile by default */
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.layout-sidebar .sidebar-header {
+    padding: 1.7rem 1.57rem 0.5rem 2.42rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.layout-sidebar .sidebar-header .app-logo {
+    width: 100%;
+}
+
+/* Full logo: shown when sidebar is expanded (mobile drawer) */
+.layout-sidebar .sidebar-header .app-logo .app-logo-normal {
+    display: inline;
+}
+
+.layout-sidebar .sidebar-header .app-logo .app-logo-normal img {
+    height: 2rem;
+    width: auto;
+    border: 0 none;
+}
+
+/* Small logo: hidden by default, shown on slim desktop */
+.layout-sidebar .sidebar-header .app-logo .app-logo-small {
+    display: none;
+}
+
+.layout-sidebar .sidebar-header .app-logo .app-logo-small img {
+    height: 2.5rem;
+    width: 2.5rem;
+    object-fit: contain;
+    border: 0 none;
+}
+
+.layout-sidebar .layout-menu-container {
+    overflow: auto;
+    flex: 1;
+    padding-bottom: 2rem;
+}
+
+/* ─── Sidebar menu ─── */
+
+.layout-sidebar .layout-menu {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    list-style-type: none;
+}
+
+/* Root menuitem link — default (mobile drawer: icon + text) */
+.layout-sidebar .layout-menu .layout-root-menuitem .layout-root-menuitem-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color var(--transition-duration);
+}
+
+.layout-sidebar .layout-menu .layout-root-menuitem .layout-root-menuitem-link:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.layout-sidebar .layout-menu .layout-root-menuitem .layout-root-menuitem-link .layout-menuitem-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.layout-sidebar .layout-menu .layout-root-menuitem .layout-root-menuitem-link .layout-menuitem-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ─── Mobile mask overlay ─── */
+
+.layout-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    background-color: var(--maskbg);
+    animation: fadein var(--transition-duration);
+}
+
+.layout-mobile-active .layout-sidebar {
+    transform: translateX(0);
+}
+
+.layout-mobile-active .layout-mask {
+    display: block;
+}
+
+/* Prevent body scroll when mobile menu is open */
+.blocked-scroll {
+    overflow: hidden;
+}
+
+/* ─── Desktop (≥ 992px): sidebar always visible, hamburger hidden ─── */
+
+@media screen and (min-width: 992px) {
+    .layout-slim .layout-sidebar {
+        width: 5.857rem;
+        overflow: visible;
+        transform: translateX(0);
+        z-index: 999;
+    }
+
+    .layout-slim .layout-sidebar .sidebar-header {
+        padding: 1.7rem 0;
+    }
+
+    .layout-slim .layout-sidebar .sidebar-header .app-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* On slim desktop, hide full logo, show icon-only */
+    .layout-slim .layout-sidebar .sidebar-header .app-logo .app-logo-normal {
+        display: none;
+    }
+
+    .layout-slim .layout-sidebar .sidebar-header .app-logo .app-logo-small {
+        display: inline;
+    }
+
+    /* Hide hamburger – sidebar is always visible on desktop */
+    .layout-slim .layout-topbar .topbar-start .topbar-menubutton {
+        display: none;
+    }
+
+    .layout-slim .layout-content-wrapper {
+        margin-left: 5.857rem;
+    }
+
+    /* Slim menu: icon-only, centred 40×40 button */
+    .layout-slim .layout-menu {
+        padding: 0.5rem 0;
+    }
+
+    .layout-slim .layout-menu .layout-root-menuitem .layout-root-menuitem-link {
+        justify-content: center;
+        padding: 8px;
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 0.5rem;
+        border-radius: 12px;
+        gap: 0;
+    }
+
+    .layout-slim .layout-menu .layout-root-menuitem .layout-root-menuitem-link:hover {
+        background-color: var(--brand-rpi-red);
+        color: #fff;
+    }
+
+    .layout-slim .layout-menu .layout-root-menuitem .layout-root-menuitem-link .layout-menuitem-icon {
+        font-size: 1.5rem;
+    }
+
+    .layout-slim .layout-menu .layout-root-menuitem .layout-root-menuitem-link .layout-menuitem-text {
+        display: none;
+    }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
